@@ -25,7 +25,7 @@ a{color:inherit}
 /* intro */
 .intro{text-align:center;padding-block:clamp(48px,8vw,104px) clamp(36px,5vw,56px)}
 h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing:-.035em}
-.lead{margin:20px auto 0;max-width:44ch;color:var(--mut);font-size:clamp(1rem,1.3vw,1.125rem);text-wrap:pretty}
+.lead{margin:20px auto 0;max-width:54ch;color:var(--mut);font-size:clamp(1rem,1.3vw,1.125rem);text-wrap:pretty}
 
 /* cards */
 .works{display:grid;gap:20px}
@@ -47,11 +47,10 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
 @media(hover:hover){
   .card:hover .shot img{transform:translateY(calc(100cqh - 100%))}
 }
-.card__body{display:flex;flex-direction:column;gap:18px;padding:20px 4px 4px}
+.card__body{display:flex;flex-direction:column;flex:1;gap:18px;padding:20px 4px 4px}
 @media(min-width:768px){.card__body{padding:22px 4px 4px}}
-.card__head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.card__head{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
 .card h2{font-weight:600;font-size:clamp(1.35rem,2.2vw,1.6rem);letter-spacing:-.025em;line-height:1.1}
-.card__city{font-size:13px;color:var(--c-mut);white-space:nowrap}
 .price{display:flex;flex-direction:column;gap:2px;padding-block:14px;border-block:1px solid var(--c-line)}
 .price__label{font-size:13px;color:var(--c-mut)}
 .price__row{display:flex;align-items:baseline;gap:14px}
@@ -62,6 +61,10 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
 .feats li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:1px;background:var(--c-acc)}
 .admin{font-size:15px;line-height:1.45;color:var(--c-mut);padding:12px 14px;background:rgba(255,255,255,.06);border-radius:12px}
 .admin b{color:var(--c-ink);font-weight:500}
+.note{font-size:14px;line-height:1.45;color:var(--c-mut);padding:12px 14px;border:1px solid var(--c-line);border-left:2px solid var(--c-acc);border-radius:12px}
+.note b{color:var(--c-ink);font-weight:500}
+.blocks{font-size:13px;line-height:1.55;color:var(--c-mut);text-wrap:pretty}
+.blocks b{color:var(--c-ink);font-weight:500}
 .open{
   margin-top:auto;align-self:flex-start;display:inline-flex;gap:8px;align-items:center;height:42px;padding:0 18px;
   border:1px solid rgba(244,241,236,.4);border-radius:99px;text-decoration:none;font-size:14px;font-weight:500;
@@ -69,6 +72,25 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
 }
 .open:hover{background:var(--c-ink);border-color:var(--c-ink);color:var(--c-bg)}
 .card :focus-visible{outline-color:var(--c-ink)}
+
+/* terms */
+.terms{margin-top:clamp(64px,9vw,112px);padding:clamp(24px,4vw,48px) clamp(20px,4vw,48px);background:#EDEDEA;border-radius:20px}
+.terms h2{font-weight:600;font-size:clamp(1.6rem,3.4vw,2.25rem);letter-spacing:-.03em;line-height:1.1;margin-bottom:clamp(24px,4vw,40px)}
+.terms__grid{display:grid;border-top:1px solid #CFCFCA}
+.terms__col{padding-block:24px;border-bottom:1px solid #CFCFCA}
+.terms__col:last-child{border-bottom:0}
+.terms h3{font-weight:600;font-size:1.125rem;letter-spacing:-.02em;line-height:1.2;margin-bottom:14px}
+.list{list-style:none;padding:0;display:grid;gap:10px;font-size:15px;line-height:1.5;color:#5F5F64}
+.terms__note{margin-top:14px;font-size:14px;line-height:1.5;color:#5F5F64;text-wrap:pretty}
+.list li{position:relative;padding-left:18px;text-wrap:pretty}
+.list li::before{content:"";position:absolute;left:0;top:.78em;width:8px;height:1px;background:var(--ink)}
+.list b{color:var(--ink);font-weight:500}
+@media(min-width:1024px){
+  .terms__grid{grid-template-columns:1.15fr 1fr 1fr;border-top:0}
+  .terms__col{padding:4px 32px 0;border-bottom:0;border-left:1px solid #CFCFCA}
+  .terms__col:first-child{padding-left:0;border-left:0}
+  .terms__col:last-child{padding-right:0}
+}
 
 /* about */
 .about{display:grid;grid-template-columns:88px 1fr;gap:18px;align-items:start;margin-top:clamp(72px,10vw,128px)}
@@ -80,8 +102,8 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
 
 /* cta */
 .cta{text-align:center;padding-block:clamp(72px,10vw,128px) clamp(56px,8vw,96px)}
-.cta h2{font-weight:600;font-size:clamp(1.9rem,4.6vw,3rem);letter-spacing:-.035em;line-height:1.05}
-.cta p{margin:14px auto 0;max-width:40ch;color:var(--mut);text-wrap:pretty}
+.cta h2{font-weight:600;font-size:clamp(1.9rem,4.6vw,3rem);letter-spacing:-.035em;line-height:1.05;max-width:20ch;margin-inline:auto;text-wrap:balance}
+.cta p{margin:14px auto 0;max-width:46ch;color:var(--mut);text-wrap:pretty}
 .btn{
   margin-top:28px;display:inline-flex;gap:10px;align-items:center;justify-content:center;min-height:52px;padding:12px 28px;
   background:var(--ink);color:#fff;text-decoration:none;font-weight:500;font-size:15px;border-radius:99px;
