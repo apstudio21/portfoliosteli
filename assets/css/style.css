@@ -130,17 +130,11 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
 }
 
 
-/* ===== tags, old price, custom card ===== */
+/* ===== tags, custom card ===== */
 .price__row{flex-wrap:wrap;row-gap:4px;column-gap:16px}
-.price__old{position:relative;font-weight:500;font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1;letter-spacing:-.03em;color:var(--c-mut);text-decoration:none;font-variant-numeric:tabular-nums}
-.price__old::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:2px;border-radius:2px;background:var(--c-acc);transform:rotate(-7deg);transform-origin:left center;transition:transform .7s var(--ease) .5s}
-.js .card[data-reveal]:not(.in) .price__old::after{transform:rotate(-7deg) scaleX(0)}
-
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
 .tag{position:relative;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:99px;font-size:13px;font-weight:500;letter-spacing:-.005em;white-space:nowrap;overflow:hidden}
 .tag--fast{background:rgba(255,138,61,.14);color:#FFB27A;border:1px solid rgba(255,138,61,.35)}
-.tag--sale{background:var(--c-acc);color:var(--c-bg);border:1px solid transparent}
-.tag--sale::after{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-160%) skewX(-20deg);animation:shine 4.5s ease-in-out 1.2s infinite}
 .tag--live{background:rgba(184,166,255,.14);color:#CDBFFF;border:1px solid rgba(184,166,255,.35)}
 .tag--own{background:rgba(255,255,255,.06);color:var(--c-mut);border:1px solid var(--c-line)}
 .dot{position:relative;width:7px;height:7px;border-radius:50%;background:#B8A6FF}
@@ -150,7 +144,6 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
 .flame svg{display:block}
 
 @keyframes flicker{0%,100%{transform:scale(1,1) rotate(0)}20%{transform:scale(.94,1.08) rotate(-3deg)}45%{transform:scale(1.04,.96) rotate(2deg)}70%{transform:scale(.96,1.06) rotate(-2deg)}}
-@keyframes shine{0%,55%{transform:translateX(-160%) skewX(-20deg)}100%{transform:translateX(420%) skewX(-20deg)}}
 @keyframes ping{0%{transform:scale(1);opacity:.7}80%,100%{transform:scale(2.8);opacity:0}}
 
 .card--custom{--c-bg:#1E1A2B;--c-acc:#B8A6FF;--c-glow:rgba(184,166,255,.28)}
@@ -167,8 +160,7 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
   .custom__btn{grid-area:btn;align-self:end}
 }
 @media(prefers-reduced-motion:reduce){
-  .flame,.dot::after,.tag--sale::after{animation:none!important}
-  .js .card[data-reveal]:not(.in) .price__old::after{transform:rotate(-7deg)}
+  .flame,.dot::after{animation:none!important}
 }
 
 /* ===== unified card behaviour (same on all three cards) ===== */
@@ -190,4 +182,8 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
 @media(prefers-reduced-motion:reduce){.feats li:hover{transform:none}}
 
 /* run infinite animations only while the card is on screen */
-.js .card:not(.live) .flame,.js .card:not(.live) .dot::after,.js .card:not(.live) .tag--sale::after{animation-play-state:paused}
+.js .card:not(.live) .flame,.js .card:not(.live) .dot::after{animation-play-state:paused}
+
+.exclusive{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;color:var(--c-mut)}
+.exclusive svg{flex:none;margin-top:2px;color:var(--c-acc)}
+.exclusive b{color:var(--c-ink);font-weight:500}
