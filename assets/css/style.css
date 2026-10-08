@@ -148,17 +148,6 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
 
 .card--custom{--c-bg:#1E1A2B;--c-acc:#B8A6FF;--c-glow:rgba(184,166,255,.28)}
 .card__sub{font-size:15px;line-height:1.45;color:var(--c-mut);max-width:44ch;text-wrap:pretty}
-.custom{display:grid;gap:20px}
-.custom__main{display:flex;flex-direction:column;gap:18px}
-.custom__side{display:flex;flex-direction:column;gap:14px}
-.custom__btn{margin-top:0}
-@media(min-width:768px){
-  .card--custom{grid-column:1/-1}
-  .custom{grid-template-columns:1fr 1.1fr;grid-template-areas:"main side" "btn side";column-gap:48px;row-gap:24px;align-items:start}
-  .custom__main{grid-area:main}
-  .custom__side{grid-area:side;padding-left:32px;border-left:1px solid var(--c-line)}
-  .custom__btn{grid-area:btn;align-self:end}
-}
 @media(prefers-reduced-motion:reduce){
   .flame,.dot::after{animation:none!important}
 }
@@ -167,8 +156,6 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
 .card{position:relative;overflow:hidden;isolation:isolate}
 .card::before{content:"";position:absolute;z-index:-1;right:-10%;top:-40%;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--c-glow),transparent 65%);opacity:.8;pointer-events:none}
 .open{justify-self:start}
-.custom__btn{justify-self:start;align-self:start;width:max-content}
-@media(min-width:768px){.custom__btn{align-self:end}}
 .open span{display:inline-block;transition:transform .3s var(--ease)}
 .open:hover span{transform:translate(2px,-2px)}
 .feats li{transition:transform .4s var(--ease)}
@@ -187,3 +174,20 @@ h1{font-weight:600;font-size:clamp(2.5rem,7vw,4rem);line-height:1;letter-spacing
 .exclusive{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;color:var(--c-mut)}
 .exclusive svg{flex:none;margin-top:2px;color:var(--c-acc)}
 .exclusive b{color:var(--c-ink);font-weight:500}
+
+/* card 3 layout: left and right columns of equal height, note and button aligned at the bottom */
+.custom{display:grid;gap:20px}
+.custom__main,.custom__side{display:contents}
+.custom__main>.card__head{order:1}
+.custom__main>.price{order:2}
+.custom__side>.feats{order:3}
+.custom__note{order:4}
+.custom__btn{order:5;justify-self:start;width:max-content;margin-top:0}
+@media(min-width:768px){
+  .card--custom{grid-column:1/-1}
+  .custom{grid-template-columns:1fr 1.1fr;column-gap:48px;align-items:stretch}
+  .custom__main,.custom__side{display:flex;flex-direction:column;gap:18px}
+  .custom__side{padding-left:32px;border-left:1px solid var(--c-line)}
+  .custom__note{margin-top:auto}
+  .custom__btn{margin-top:auto}
+}
