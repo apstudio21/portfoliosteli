@@ -24,9 +24,19 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
+  // pause looping animations (flame, shine, pulse) for cards that are off screen
+  function watchLive() {
+    if (!('IntersectionObserver' in window)) { return; }
+    var lo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle('live', e.isIntersecting); });
+    }, { threshold: 0 });
+    document.querySelectorAll('.card').forEach(function (el) { lo.observe(el); });
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', function () { init(); watchLive(); });
   } else {
     init();
+    watchLive();
   }
 })();
